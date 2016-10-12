@@ -23,7 +23,7 @@ public class CoolWeatherOpenHelper extends SQLiteOpenHelper {
             + "id integer primary key autoincrement, "
             + "city_name text, "
             + "city_code text, "
-            + "province_id integer)";
+            + "province_code text)";
     /**
      * County表建表语句
      */
@@ -31,7 +31,7 @@ public class CoolWeatherOpenHelper extends SQLiteOpenHelper {
             + "id integer primary key autoincrement, "
             + "county_name text, "
             + "county_code text, "
-            + "city_id integer)";
+            + "city_code text)";
 
     public CoolWeatherOpenHelper(Context context, String name, SQLiteDatabase.CursorFactory
             factory, int version) {
@@ -47,6 +47,9 @@ public class CoolWeatherOpenHelper extends SQLiteOpenHelper {
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
-
+        db.execSQL("drop table if exists Province");
+        db.execSQL("drop table if exists City");
+        db.execSQL("drop table if exists County");
+        onCreate(db);
     }
 }
