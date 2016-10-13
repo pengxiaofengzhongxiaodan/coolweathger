@@ -17,6 +17,8 @@
             </intent-filter>
         </activity>
         <activity android:name="pxfandroid.coolweather.acitvity.WeatherActivity"></activity>
+        <service android:name="pxfandroid.coolweather.service.AutoUpdateService"></service>
+        <receiver android:name="pxfandroid.coolweather.receiver.AutoUpdateReceiver"></receiver>
     </application>
 
 </manifest>

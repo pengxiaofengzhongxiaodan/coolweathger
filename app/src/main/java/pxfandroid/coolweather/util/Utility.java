@@ -237,7 +237,7 @@ public class Utility {
                             maxTemp = parser.getAttributeValue(10);
                             publishTime = parser.getAttributeValue(16);
                             weatherDesp = parser.getAttributeValue(8) + "--" + parser.getAttributeValue(12);
-                            saveWeatherInfo(context,cityName,minTemp,maxTemp,weatherDesp,publishTime);
+                            saveWeatherInfo(context,cityCode,cityName,minTemp,maxTemp,weatherDesp,publishTime);
                         }
                     } else {
 
@@ -255,11 +255,12 @@ public class Utility {
         }
     }
 
-    public static void saveWeatherInfo(Context context, String cityName, String minTemp, String maxTemp, String weatherDesp, String publishTime) {
+    public static void saveWeatherInfo(Context context,String countyName, String cityName, String minTemp, String maxTemp, String weatherDesp, String publishTime) {
 //      SimpleDateFormat sdf=new SimpleDateFormat("")
         SharedPreferences.Editor editor = PreferenceManager.getDefaultSharedPreferences(context).edit();
         editor.putBoolean("city_selected", true);
         editor.putString("city_name", cityName);
+        editor.putString("county_name", countyName);
         editor.putString("temp1", minTemp);
         editor.putString("temp2", maxTemp);
         editor.putString("weather_desp", weatherDesp);
